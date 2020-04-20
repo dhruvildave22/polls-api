@@ -1,7 +1,9 @@
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+from django.views.generic.edit import CreateView 
 
-from .models import Poll
+
+from .models import Poll, GeeksModel
 
 
 def polls_list(request):
@@ -20,3 +22,13 @@ def polls_detail(request, pk):
         "pub_date": poll.pub_date
     }}
     return JsonResponse(data)
+
+class GeeksCreate(CreateView): 
+  
+    # specify the model for create view 
+    model = GeeksModel 
+  
+    # specify the fields to be displayed 
+  
+    fields = ['title', 'description'] 
+

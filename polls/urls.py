@@ -7,6 +7,8 @@ from .apiviews import PollViewSet
 from rest_framework.authtoken import views
 from rest_framework_swagger.views import get_swagger_view
 
+from .views import GeeksCreate
+
 
 schema_view = get_swagger_view(title='Polls API')
 
@@ -23,6 +25,7 @@ urlpatterns = [
     path("users/", UserCreate.as_view(), name="user_create"),
     path("login/", views.obtain_auth_token, name="login"),
     path(r"swagger-docs/", schema_view),
+    path('geeks/', GeeksCreate.as_view() ), 
 
 
 ]
